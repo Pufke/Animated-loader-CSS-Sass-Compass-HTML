@@ -1,0 +1,256 @@
+@import "compass/css3";
+
+
+$blockSize: 2em;
+//$blockSize: 6vmin; // Try this in Firefox! Viewport based size, which doesn't work in Canary at the moment
+
+// Play with these to see what you get
+$delay: .06s;
+$duration: .88s;
+$startingColor: #fdfdfd;
+$endingColor: #dadada;
+
+// Calculate some values
+$blockMargin: $blockSize / 3;
+$loaderSize: $blockSize * 3 + $blockMargin * 2;
+
+@mixin animation-delay( $delay ) {
+  -webkit-animation-delay: $delay;
+  animation-delay: $delay;
+}
+
+// Official syntax supported by IE10, FF16, Opera 12.1,
+// so we're only going to add the webkit prefix
+@mixin animation( $ani1:null, $ani2:null ) {
+  @if ($ani2 != null) {
+    -webkit-animation: $ani1, $ani2;
+    animation: $ani1, $ani2;
+  }
+  
+  @else if ($ani1 != null) {
+    -webkit-animation: $ani1;
+    animation: $ani1;
+  }
+}
+
+body {
+  text-align: center;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: $loaderSize;
+  height: $loaderSize;
+  margin-left: -$loaderSize/2;
+  margin-top: -$loaderSize/2;
+}
+
+.loader-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  opacity: 0;
+  width: $blockSize;
+  height: $blockSize;
+  background: $startingColor;
+  @include animation(show $duration step-end infinite alternate,
+    pulse $duration linear infinite alternate);
+}
+
+
+
+// Second
+.loader-block:nth-child(1) {
+  @include translate(0, 0);
+  @include animation-delay(1 * $delay);
+}
+
+// Ninth
+.loader-block:nth-child(2) {
+  @include translate($blockSize + $blockMargin, 0);
+  @include animation-delay(2 * $delay);
+}
+
+
+
+// Sixth
+.loader-block:nth-child(4) {
+  @include translate(0, $blockSize + $blockMargin);
+  @include animation-delay(5 * $delay);
+}
+
+// Third
+.loader-block:nth-child(5) {
+  @include translate($blockSize + $blockMargin, $blockSize + $blockMargin);
+  @include animation-delay(2 * $delay);
+}
+
+
+
+// Seventh
+.loader-block:nth-child(7) {
+  @include translate(0, ($blockSize * 2) + ($blockMargin * 2));
+  @include animation-delay(6 * $delay);
+}
+
+// Fifth
+.loader-block:nth-child(8) {
+  @include translate($blockSize + $blockMargin, ($blockSize * 2) + ($blockMargin * 2));
+  @include animation-delay(4 * $delay);
+}
+
+// First
+.loader-block:nth-child(9) {
+  @include translate(($blockSize * 0.65) + ($blockMargin * 2), ($blockSize * 2) + ($blockMargin * 6));
+}
+
+// First
+.loader-block:nth-child(6) {
+  @include translate(($blockSize * 0.69) + ($blockMargin * 2), ($blockSize * 2) + ($blockMargin * -10));
+}
+
+.loader-block:nth-child(10) {
+  @include translate(($blockSize * 3.25) + ($blockMargin * 2), ($blockSize * -2) + ($blockMargin * 2));
+   @include animation-delay(2 * $delay);
+}
+
+.loader-block:nth-child(11) {
+  @include translate(($blockSize * 4.6) + ($blockMargin * 2), ($blockSize * 2) + ($blockMargin * 2));
+   @include animation-delay(4 * $delay);
+}
+
+.loader-block:nth-child(12) {
+  @include translate(($blockSize * 5.9) + ($blockMargin * 2), ($blockSize * 2) + ($blockMargin * 2));
+   @include animation-delay(6 * $delay);
+}
+
+.loader-block:nth-child(13) {
+  @include translate(($blockSize * 5.9) + ($blockMargin * 2), ($blockSize * 0.7) + ($blockMargin * 2));
+   @include animation-delay(8 * $delay);
+}
+
+.loader-block:nth-child(14) {
+  @include translate(($blockSize * 5.9) + ($blockMargin * 2), ($blockSize * 0.7) + ($blockMargin * -2));
+   @include animation-delay(2 * $delay);
+}
+//16
+.loader-block:nth-child(15) {
+  @include translate(($blockSize * 5.95) + ($blockMargin * -2), ($blockSize * 0.7) + ($blockMargin * -2.1));
+   @include animation-delay(10 * $delay);
+}
+
+.loader-block:nth-child(16) {
+  @include translate(($blockSize * 5.94) + ($blockMargin * -2), ($blockSize * 4.7) + ($blockMargin * -2.1));
+   @include animation-delay(8 * $delay);
+}
+
+.loader-block:nth-child(17) {
+  @include translate(($blockSize * 1.93) + ($blockMargin * -5.8), ($blockSize * 4) + ($blockMargin * 0));
+   @include animation-delay(6 * $delay);
+}
+
+.loader-block:nth-child(18) {
+  @include translate(($blockSize * 1.93) + ($blockMargin * -5.8), ($blockSize * 4) + ($blockMargin * -16));
+   @include animation-delay(4 * $delay);
+}
+
+.loader-block:nth-child(18) {
+  @include translate(($blockSize * 1.93) + ($blockMargin * -5.8), ($blockSize * 4) + ($blockMargin * -16));
+   @include animation-delay(2 * $delay);
+}
+
+.loader-block:nth-child(19) {
+  @include translate(($blockSize * 1.93) + ($blockMargin * -5.8), ($blockSize * 4) + ($blockMargin * -20));
+   @include animation-delay(6 * $delay);
+}
+
+.loader-block:nth-child(20) {
+  @include translate(($blockSize * 3.28) + ($blockMargin * -5.8), ($blockSize * 4) + ($blockMargin * -20));
+   @include animation-delay(8 * $delay);
+}
+
+.loader-block:nth-child(21) {
+  @include translate(($blockSize * 4.6) + ($blockMargin * -5.8), ($blockSize * 4) + ($blockMargin * -20));
+   @include animation-delay(6 * $delay);
+}
+
+.loader-block:nth-child(22) {
+  @include translate(($blockSize * 5.85) + ($blockMargin * -5.8), ($blockSize * 4) + ($blockMargin * -20));
+   @include animation-delay(10 * $delay);
+}
+
+.loader-block:nth-child(23) {
+  @include translate(($blockSize * 7.2) + ($blockMargin * -5.8), ($blockSize * 4) + ($blockMargin * -20));
+   @include animation-delay(4 * $delay);
+}
+
+.loader-block:nth-child(24) {
+  @include translate(($blockSize * 8.5) + ($blockMargin * -5.8), ($blockSize * 4) + ($blockMargin * -20));
+   @include animation-delay(8 * $delay);
+}
+
+.loader-block:nth-child(25) {
+  @include translate(($blockSize * 8.5) + ($blockMargin * -5.8), ($blockSize * 5.4) + ($blockMargin * -20));
+   @include animation-delay(2 * $delay);
+}
+
+.loader-block:nth-child(26) {
+  @include translate(($blockSize * 7.21) + ($blockMargin * -5.8), ($blockSize * 5.4) + ($blockMargin * -20));
+   @include animation-delay(4 * $delay);
+}
+
+.loader-block:nth-child(27) {
+  @include translate(($blockSize * 7.25) + ($blockMargin * -2), ($blockSize * 4.7) + ($blockMargin * -2.1));
+   @include animation-delay(8 * $delay);
+}
+
+.loader-block:nth-child(28) {
+  @include translate(($blockSize * 5.95) + ($blockMargin * -2), ($blockSize * 2.05) + ($blockMargin * -2.1));
+}
+
+.loader-block:nth-child(29) {
+  @include translate(($blockSize * 2) + ($blockMargin * 2), ($blockSize * -2) + ($blockMargin * 2));
+}
+@-webkit-keyframes pulse {
+  from,
+  40% { 
+    background: $startingColor;
+  }
+  to {
+    background: $endingColor;
+  }
+}
+
+@-webkit-keyframes show {
+  from, 40% { opacity: 0; }
+  41%, to { opacity: 1; }
+}
+
+@keyframes pulse {
+  from,
+  40% { 
+    background: $startingColor;
+  }
+  to {
+    background: $endingColor;
+  }
+}
+
+@keyframes show {
+  from, 40% { opacity: 0; }
+  41%, to { opacity: 1; }
+}
+
+
+/* Body styling */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @include background(#999 radial-gradient(circle farthest-side, #333, #111));
+}
